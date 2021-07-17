@@ -1,0 +1,9 @@
+button {
+    color: black;
+    padding: 12px;
+    background-color:red;
+    text-align: center;
+    border: none;
+    margin: auto;
+    display: block;
+}

@@ -1,0 +1,13 @@
+h2 {
+    color: red;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+button {
+    width: 80px;
+    display: block;
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+}
