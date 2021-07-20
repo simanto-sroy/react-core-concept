@@ -1,30 +1,30 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Form from './form.jsx'
 
-const initvalues = {
-    name: '',
-    email: '',
-    password: '',
-    birthDay: '',
-    gender: '',
-}
 
 class SineUpForm extends React.Component {
 
     state = {
-        values: initvalues,
+        values: {
+            name: '',
+            email: '',
+            password: '',
+            birthDay: '',
+            gender: '',
+        },
         agreement: false,
         error: {},
     };
 
-    handleChange = event => {
+    handleChange = (event) => {
         this.setState({
-            ...this.state.values,
-            [event.target.name]: event.target.value
+            values: {
+                ...this.state.values,
+                [event.target.name]: event.target.value
+            }
         })
-        console.log(event.target.value);
-    };
+    }
 
     handleChecked = event => {
         this.setState({
@@ -35,18 +35,24 @@ class SineUpForm extends React.Component {
     handleSubmit = event => {
         event.preventDefault()
 
-        const {isValid, error} = this.validate()
+        const { isValid, error } = this.validate();
 
         if (isValid) {
-            console.log(this.state.value);
-
+            this.props.createUser(this.state.values)
             event.target.reset()
             this.setState({
-                values: initvalues,
-                agreement: false
+                values: {
+                    name: '',
+                    email: '',
+                    password: '',
+                    birthDay: '',
+                    gender: '',
+                },
+                agreement: false,
+                error: {}
             })
-        }else{
-            this.setState({error})
+        } else {
+            this.setState({ error })
         }
     };
 
@@ -57,17 +63,21 @@ class SineUpForm extends React.Component {
         if (!name) {
             error.name = 'Please Provide Your Name'
         }
+        
         if (!email) {
-            error.name = 'Please Provide Your Email'
+            error.email = 'Please Provide Your Email'
         }
+        
         if (!password) {
-            error.name = 'Please Provide Your Password'
+            error.password = 'Please Provide Your Password'
         }
+       
         if (!birthDay) {
-            error.name = 'Please Provide Your BithDate'
+            error.birthDay = 'Please Provide Your BithDate'
         }
+        
         if (!gender) {
-            error.name = 'Please Select Your Gender'
+            error.gender = 'Please Select Your Gender'
         }
 
         return {
@@ -91,6 +101,10 @@ class SineUpForm extends React.Component {
             </div>
         )
     }
+}
+
+SineUpForm.propTypes = {
+    createUser: PropTypes.func.isRequired
 }
 
 export default SineUpForm;

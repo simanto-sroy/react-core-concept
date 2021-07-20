@@ -11,8 +11,8 @@ const Form = ({ values, handleChange, handleChecked, handleSubmit, agreement, er
                 label="Name"
                 placeholder="Enter Your Name"
                 value={values.name}
-                error={error.name}
                 onChange={handleChange}
+                errors={error.name}
             />
             <TextInput
                 name="email"
@@ -20,8 +20,8 @@ const Form = ({ values, handleChange, handleChecked, handleSubmit, agreement, er
                 placeholder="Enter Your email"
                 label="Email"
                 value={values.email}
-                error={error.email}
                 onChange={handleChange}
+                errors={error.email}
             />
             <TextInput
                 name="password"
@@ -29,16 +29,16 @@ const Form = ({ values, handleChange, handleChecked, handleSubmit, agreement, er
                 placeholder="*******"
                 label="Password"
                 value={values.password}
-                error={error.password}
                 onChange={handleChange}
+                errors={error.password}
             />
             <TextInput
                 name="birthDay"
                 type="date"
                 label="Bith Date"
-                error={error.birthDay}
                 value={values.birthDay}
                 onChange={handleChange}
+                errors={error.birthDay}
             />
             <div className="form-group my-3">
                 <label>
